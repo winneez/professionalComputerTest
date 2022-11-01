@@ -1,0 +1,62 @@
+[
+	{
+    "monthNumber": 1,
+		"abbreviation": "Jan",
+		"name": "January"
+	},
+	{
+    "monthNumber": 2,
+		"abbreviation": "Feb",
+		"name": "February"
+	},
+	{
+    "monthNumber": 3,
+		"abbreviation": "Mar",
+		"name": "March"
+	},
+	{
+    "monthNumber": 4,
+		"abbreviation": "Apr",
+		"name": "April"
+	},
+	{
+    "monthNumber": 5,
+		"abbreviation": "May",
+		"name": "May"
+	},
+	{
+    "monthNumber": 6,
+		"abbreviation": "Jun",
+		"name": "June"
+	},
+	{
+    "monthNumber": 7,
+		"abbreviation": "Jul",
+		"name": "July"
+	},
+	{
+    "monthNumber": 8,
+		"abbreviation": "Aug",
+		"name": "August"
+	},
+	{
+    "monthNumber": 9,
+		"abbreviation": "Sep",
+		"name": "September"
+	},
+	{
+    "monthNumber": 10,
+		"abbreviation": "Oct",
+		"name": "October"
+	},
+	{
+    "monthNumber": 11,
+		"abbreviation": "Nov",
+		"name": "November"
+	},
+	{
+    "monthNumber": 12,
+		"abbreviation": "Dec",
+		"name": "December"
+	}
+]

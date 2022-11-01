@@ -1,0 +1,88 @@
+<div class="py-4 mx-2">
+  <div class="pb-4">
+    <label class="p-d-block text-label"
+      >Provide Total value Taxable Electronic Service
+      <span style="color: red">*</span>
+    </label>
+  </div>
+  <div class="grid ml-3 py-2">
+    <div class="col-8">
+      <label class="p-d-block text-label"
+        >1. Total value of Taxable Electronic service exclusive of VAT
+      </label>
+    </div>
+    <div class="col-4">
+      <p-inputNumber
+        [(ngModel)]="surcharge"
+        mode="currency"
+        inputId="currency-thai"
+        currency="THB"
+        locale="en-TH"
+        [useGrouping]="false"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="grid ml-3 py-2">
+    <div class="col-8">
+      <label class="p-d-block text-label"
+        >2. Total VAT to be Remitted (7% of 1.)
+      </label>
+    </div>
+    <div class="col-4">
+      <p-inputNumber
+        [(ngModel)]="taxAmount"
+        mode="currency"
+        inputId="currency-thai"
+        currency="THB"
+        locale="en-TH"
+        [useGrouping]="false"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="pb-4">
+    <label class="p-d-block text-label"
+      >Provide Total value Taxable Electronic Service
+      <span style="color: red">*</span>
+    </label>
+  </div>
+  <div class="grid ml-3 py-2">
+    <div class="col-8">
+      <label class="p-d-block text-label"
+        >1. Surcharge <i class="pi pi-question-circle ml-2" pTooltip="Ordinary Filing"></i>
+      </label>
+    </div>
+    <div class="col-4">
+      <p-inputNumber
+        [(ngModel)]="surcharge"
+        mode="currency"
+        inputId="currency-thai"
+        currency="THB"
+        locale="en-TH"
+        [useGrouping]="false"
+        [readonly]="true"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="grid ml-3 py-2">
+    <div class="col-8">
+      <label class="p-d-block text-label"
+        >2. Penalty <i class="pi pi-question-circle ml-2" pTooltip="Ordinary Filing"></i>
+      </label>
+    </div>
+    <div class="col-4">
+      <p-inputNumber
+        [(ngModel)]="taxAmount"
+        mode="currency"
+        inputId="currency-thai"
+        currency="THB"
+        locale="en-TH"
+        [useGrouping]="false"
+        [readonly]="true"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+</div>

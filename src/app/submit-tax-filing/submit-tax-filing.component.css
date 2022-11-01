@@ -1,0 +1,29 @@
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #fff;
+  padding: 0.5rem 0 0 0;
+}
+
+div.center {
+  text-align: center;
+  color: black;
+}
+
+div.large {
+  font-size: 200%;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+div.header {
+  font-size: 150%;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+div.body {
+  font-size: 100%;
+  font-family: sans-serif;
+}

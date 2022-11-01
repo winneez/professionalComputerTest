@@ -1,0 +1,65 @@
+<div class="card card-header">
+  <div class="tab-bar">
+    <div class="center large py-5">Submit Tax Filing</div>
+    <div class="py-5 align-items-center justify-content-center">
+      <p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
+    </div>
+  </div>
+</div>
+<div class="py-3">
+  <p-card>
+    <div class="mx-6">
+      <div class="py-4">
+        <p-fieldset legend="Tax Filing Detail" [toggleable]="true">
+          <app-tax-detail *ngIf="!isConfirm"
+            (typeOfFiling)="getTypeOfFiling($event)"
+          ></app-tax-detail>
+          <app-tax-detail-complete *ngIf="isConfirm"></app-tax-detail-complete>
+        </p-fieldset>
+      </div>
+      <!-- <div style="align-items: right;">View Exchange Rate</div> -->
+      <div class="py-4">
+        <p-fieldset legend="Tax Computation" [toggleable]="true">
+          <div *ngIf="!isConfirm">
+              <app-tax-computation-ordinary
+            *ngIf="!isAdditionalType"
+          ></app-tax-computation-ordinary>
+          <app-tax-computation-additional
+            *ngIf="isAdditionalType"
+          ></app-tax-computation-additional>
+          </div>
+          <div *ngIf="isConfirm"><app-tax-computation-complete></app-tax-computation-complete></div>
+
+        </p-fieldset>
+      </div>
+      <div class="py-4" *ngIf="isConfirm">
+        <p-fieldset legend="Declaration" [toggleable]="true">
+          <app-declaration ></app-declaration>
+        </p-fieldset>
+      </div>
+      <div>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Back"
+          class="p-button-outlined p-button-rounded p-button-info mr-2"
+          (click)="previousPage()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Next"
+          class="p-button-rounded p-button-info"
+          (click)="nextPage()"
+        ></button>
+      </div>
+    </div>
+  </p-card>
+</div>
+
+
+
+
+<router-outlet></router-outlet>

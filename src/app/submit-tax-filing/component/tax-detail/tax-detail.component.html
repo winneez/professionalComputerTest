@@ -1,0 +1,106 @@
+<div class="py-4 mx-2">
+  <div class="pb-4">
+    <label class="p-d-block text-label"
+      >Type of Filing <span style="color: red">*</span>
+    </label>
+  </div>
+  <div class="grid ml-3">
+    <div class="col-6">
+      <p-radioButton
+        name="Ordinary Filing"
+        value="0"
+        [(ngModel)]="selectFiling"
+        (onClick)="onClickRadio()"
+      ></p-radioButton>
+      <label class="ml-3">Ordinary Filing</label>
+      <i class="pi pi-question-circle ml-2" pTooltip="Ordinary Filing"></i>
+    </div>
+    <div class="col-6">
+      <p-radioButton
+        name="Additional Filing"
+        value="1"
+        [(ngModel)]="selectFiling"
+        (onClick)="onClickRadio()"
+      ></p-radioButton>
+      <label class="ml-3">Ordinary Filing</label>
+      <i class="pi pi-question-circle ml-2" pTooltip="Additional Filing"></i>
+    </div>
+  </div>
+  <div *ngIf="!isAdditionalType">
+    <div class="grid">
+      <div class="col-6">
+        <div class="py-4">
+          <label class="p-d-block text-label"
+            >VAT Month <span style="color: red">*</span>
+          </label>
+        </div>
+        <div class="grid">
+          <div class="mx-2">
+            <p-dropdown
+              [options]="monthDataList"
+              [(ngModel)]="selectedMonth"
+              optionLabel="name"
+              optionValue="monthNumber"
+            ></p-dropdown>
+          </div>
+          <div>
+            <p-dropdown
+              [options]="yearList"
+              [(ngModel)]="selectedYear"
+              (onChange)="onYearChange()"
+              optionLabel="year"
+              optionValue="year"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isAdditionalType">
+    <div class="grid">
+      <div class="col-6">
+        <div class="py-4">
+          <label class="p-d-block text-label"
+            >Tax Month <span style="color: red">*</span>
+          </label>
+        </div>
+        <div class="grid">
+          <div class="mx-2">
+            <p-dropdown
+              [options]="monthDataList"
+              [(ngModel)]="selectedMonth"
+              optionLabel="name"
+              optionValue="monthNumber"
+            ></p-dropdown>
+          </div>
+          <div>
+            <p-dropdown
+              [options]="yearList"
+              [(ngModel)]="selectedYear"
+              (onChange)="onYearChange()"
+              optionLabel="year"
+              optionValue="year"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="py-4">
+          <label class="p-d-block text-label"
+            >Type <span style="color: red">*</span>
+          </label>
+        </div>
+        <div class="grid">
+          <div>
+            <p-dropdown
+              [options]="typeTaxMonth"
+              [(ngModel)]="selectedType"
+              optionLabel="type"
+              optionValue="code"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
