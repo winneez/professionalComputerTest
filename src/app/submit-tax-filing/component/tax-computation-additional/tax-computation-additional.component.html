@@ -20,8 +20,14 @@
         currency="THB"
         locale="en-TH"
         [useGrouping]="false"
+        [ngClass]="{
+          'ng-invalid ng-dirty': isSaleNull
+        }"
       >
       </p-inputNumber>
+      <small *ngIf="isSaleNull" id="username2-help" class="p-error block"
+        >Invalid Data!!</small
+      >
     </div>
   </div>
   <div class="grid ml-3 py-2">
@@ -41,13 +47,16 @@
         locale="en-TH"
         [useGrouping]="false"
         [ngClass]="{
-          'ng-invalid ng-dirty': isInvalid
+          'ng-invalid ng-dirty': isTaxNull || isInvalid
         }"
       >
       </p-inputNumber>
-      <small id="username2-help" class="p-error block">{{
-        invalidTaxAmount
-      }}</small>
+      <small
+        *ngIf="isTaxNull || isInvalid"
+        id="username2-help"
+        class="p-error block"
+        >Invalid Data!!</small
+      >
     </div>
   </div>
   <div class="pb-4">
@@ -70,8 +79,8 @@
         inputId="currency-thai"
         currency="THB"
         locale="en-TH"
-        [useGrouping]="false"
-        [readonly]="true"
+        [useGrouping]="true"
+        [disabled]="true"
       >
       </p-inputNumber>
     </div>
@@ -90,8 +99,8 @@
         inputId="currency-thai"
         currency="THB"
         locale="en-TH"
-        [useGrouping]="false"
-        [readonly]="true"
+        [useGrouping]="true"
+        [disabled]="true"
       >
       </p-inputNumber>
     </div>
@@ -110,8 +119,8 @@
         inputId="currency-thai"
         currency="THB"
         locale="en-TH"
-        [useGrouping]="false"
-        [readonly]="true"
+        [useGrouping]="true"
+        [disabled]="true"
       >
       </p-inputNumber>
     </div>

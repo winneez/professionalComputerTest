@@ -18,6 +18,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { ConfirmModalComponent } from './modal/confirm-modal/confirm-modal.component';
+import {DialogModule} from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
     TaxDetailCompleteComponent,
     TaxComputationCompleteComponent,
     DeclarationComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     TooltipModule,
     ButtonModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    DialogModule
   ],
   exports: [BrowserAnimationsModule],
 })

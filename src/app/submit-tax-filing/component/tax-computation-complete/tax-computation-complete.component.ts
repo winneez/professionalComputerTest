@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tax-computation-complete',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tax-computation-complete.component.css']
 })
 export class TaxComputationCompleteComponent implements OnInit {
+  @Input() dataList : any =[];
 
   constructor() { }
 

@@ -11,36 +11,47 @@
     <div class="mx-6">
       <div class="py-4">
         <p-fieldset legend="Tax Filing Detail" [toggleable]="true">
-          <app-tax-detail *ngIf="!isConfirm"
+          <app-tax-detail
+            *ngIf="!isConfirm"
             (typeOfFiling)="getTypeOfFiling($event)"
             (filingMonth)="getFilingMonth($event)"
             (filingYear)="getFilingYear($event)"
           ></app-tax-detail>
-          <app-tax-detail-complete *ngIf="isConfirm"></app-tax-detail-complete>
+          <app-tax-detail-complete
+            *ngIf="isConfirm"
+            [dataList]="dataList"
+          ></app-tax-detail-complete>
         </p-fieldset>
       </div>
       <!-- <div style="align-items: right;">View Exchange Rate</div> -->
       <div class="py-4">
         <p-fieldset legend="Tax Computation" [toggleable]="true">
           <div *ngIf="!isConfirm">
-              <app-tax-computation-ordinary
-            *ngIf="!isAdditionalType"
-            (sendSaleAmount)="getSaleAmount($event)"
-            (sendTaxAmount)="getTaxAmount($event)"
-            [isTaxNull]="isTaxNull"
-            [isSaleNull]="isTaxNull"
-          ></app-tax-computation-ordinary>
-          <app-tax-computation-additional
-            *ngIf="isAdditionalType"
-          ></app-tax-computation-additional>
+            <app-tax-computation-ordinary
+              *ngIf="!isAdditionalType"
+              (sendSaleAmount)="getSaleAmount($event)"
+              (sendTaxAmount)="getTaxAmount($event)"
+              [isTaxNull]="isTaxNull"
+              [isSaleNull]="isTaxNull"
+            ></app-tax-computation-ordinary>
+            <app-tax-computation-additional
+              *ngIf="isAdditionalType"
+              (sendSaleAmount)="getSaleAmount($event)"
+              (sendTaxAmount)="getTaxAmount($event)"
+              [isTaxNull]="isTaxNull"
+              [isSaleNull]="isTaxNull"
+            ></app-tax-computation-additional>
           </div>
-          <div *ngIf="isConfirm"><app-tax-computation-complete></app-tax-computation-complete></div>
-
+          <div *ngIf="isConfirm">
+            <app-tax-computation-complete
+              [dataList]="dataList"
+            ></app-tax-computation-complete>
+          </div>
         </p-fieldset>
       </div>
       <div class="py-4" *ngIf="isConfirm">
         <p-fieldset legend="Declaration" [toggleable]="true">
-          <app-declaration ></app-declaration>
+          <app-declaration></app-declaration>
         </p-fieldset>
       </div>
       <div *ngIf="!isConfirm">
@@ -65,7 +76,7 @@
         <button
           pButton
           pRipple
-          style="left: 50%;"
+          style="left: 50%"
           type="button"
           label="Confirm and Submit"
           class="p-button-rounded p-button-info justify-content-center"
@@ -76,7 +87,9 @@
   </p-card>
 </div>
 
-
-
-
-<router-outlet></router-outlet>
+<app-confirm-modal
+  *ngIf="confirmModalDisplay"
+  [showModal]="confirmModalDisplay"
+  (closeConfirmModal)="closeConfirm()"
+  [dataList]="dataList"
+></app-confirm-modal>

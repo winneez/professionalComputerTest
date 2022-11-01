@@ -18,10 +18,10 @@ export class TaxDetailComponent implements OnInit {
   yearList: any = [];
   selectedMonth: string = '1';
   selectedYear: string = '';
-  selectedType: string ='';
+  selectedType: string = '';
   currentYear = new Date().getFullYear();
   currentMonth = (new Date().getMonth() + 1).toString();
-  typeTaxMonth : any =[{type: "On-Time", code: "1"}]
+  typeTaxMonth: any = [{ type: 'On-Time', code: '1' }];
 
   constructor() {}
 
@@ -38,13 +38,16 @@ export class TaxDetailComponent implements OnInit {
       this.yearList.push({ year: year });
       year -= 1;
     }
-    if (this.currentYear=== Number(this.selectedYear)) {
+    if (this.currentYear === Number(this.selectedYear)) {
       for (let i = 0; i < Number(this.currentMonth); i++) {
         this.monthDataList.push(monthList[i]);
       }
     } else {
       this.monthDataList = monthList;
     }
+    this.filingYear.emit(this.selectedYear);
+    this.typeOfFiling.emit(this.selectFiling);
+    this.filingMonth.emit(this.selectedMonth);
   }
 
   onClickRadio() {
@@ -56,10 +59,9 @@ export class TaxDetailComponent implements OnInit {
     this.typeOfFiling.emit(this.selectFiling);
   }
 
-  onYearChange(){
-    this.monthDataList =[]
-    if (this.currentYear=== Number(this.selectedYear)) {
-
+  onYearChange() {
+    this.monthDataList = [];
+    if (this.currentYear === Number(this.selectedYear)) {
       for (let i = 0; i < Number(this.currentMonth); i++) {
         this.monthDataList.push(monthList[i]);
       }
@@ -69,8 +71,7 @@ export class TaxDetailComponent implements OnInit {
     this.filingYear.emit(this.selectedYear);
   }
 
-
-  onMonthChange(){
-    this.filingMonth.emit(this.selectedMonth)
+  onMonthChange() {
+    this.filingMonth.emit(this.selectedMonth);
   }
 }

@@ -37,16 +37,18 @@ export class TaxComputationOrdinaryComponent implements OnInit {
   taxAmountChange() {
     this.invalidTaxAmount = '';
     this.isInvalid = false;
-    console.log("taxAmount: ",this.taxAmount," totalOfVat: ",this.totalOfVat,"====",this.taxAmount-this.totalOfVat);
     var taxTotalLength = Math.abs(this.taxAmount - this.totalOfVat)
     if (
       taxTotalLength > 20
     ) {
       this.invalidTaxAmount = 'Invalid Tax!!';
       this.isInvalid = true;
+      this.sendSaleAmount.emit(this.saleAmount);
+      this.sendTaxAmount.emit(this.taxAmount);
     } else {
       this.invalidTaxAmount = '';
       this.isInvalid = false;
+      this.sendSaleAmount.emit(this.saleAmount);
       this.sendTaxAmount.emit(this.taxAmount);
     }
 
