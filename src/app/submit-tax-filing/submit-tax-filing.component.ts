@@ -13,6 +13,7 @@ export class SubmitTaxFilingComponent implements OnInit {
   page: string = '';
   activeIndex: number = 0
 
+
   constructor() {}
 
   items: MenuItem[] = [];
@@ -40,5 +41,8 @@ export class SubmitTaxFilingComponent implements OnInit {
 
   previousPage() {
     this.isConfirm = false
+  }
+  confirmBtn(){
+
   }
 }

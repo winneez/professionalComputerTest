@@ -37,7 +37,7 @@
           <app-declaration ></app-declaration>
         </p-fieldset>
       </div>
-      <div>
+      <div *ngIf="!isConfirm">
         <button
           pButton
           pRipple
@@ -53,6 +53,17 @@
           label="Next"
           class="p-button-rounded p-button-info"
           (click)="nextPage()"
+        ></button>
+      </div>
+      <div class="col-12" *ngIf="isConfirm">
+        <button
+          pButton
+          pRipple
+          style="left: 50%;"
+          type="button"
+          label="Confirm and Submit"
+          class="p-button-rounded p-button-info justify-content-center"
+          (click)="confirmBtn()"
         ></button>
       </div>
     </div>

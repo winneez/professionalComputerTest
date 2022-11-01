@@ -14,6 +14,7 @@
     <div class="col-4">
       <p-inputNumber
         [(ngModel)]="surcharge"
+        (ngModelChange)="surchargeChange()"
         mode="currency"
         inputId="currency-thai"
         currency="THB"
@@ -32,13 +33,20 @@
     <div class="col-4">
       <p-inputNumber
         [(ngModel)]="taxAmount"
+        (ngModelChange)="taxAmountChange()"
+        aria-describedby="username2-help"
         mode="currency"
         inputId="currency-thai"
         currency="THB"
         locale="en-TH"
         [useGrouping]="false"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            isInvalid
+        }"
       >
       </p-inputNumber>
+      <small id="username2-help" class="p-error block">{{invalidTaxAmount}}</small>
     </div>
   </div>
 </div>
