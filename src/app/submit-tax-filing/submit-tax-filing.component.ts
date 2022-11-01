@@ -161,6 +161,14 @@ export class SubmitTaxFilingComponent implements OnInit {
   }
 
   closeConfirm(){
+    this.filingType= '';
+    this.month = '';
+    this.year = '';
+    this.saleAmount = 0;
+    this.taxAmount = 0;
+    this.surcharge = 0;
+    this.penalty = 200;
+    this.totalAmount = 0;
     this.confirmModalDisplay = false;
     this.isConfirm = false;
   }
