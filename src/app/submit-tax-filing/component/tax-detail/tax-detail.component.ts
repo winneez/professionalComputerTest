@@ -9,12 +9,14 @@ import monthList from '../../assets/monthList.json';
 })
 export class TaxDetailComponent implements OnInit {
   @Output() typeOfFiling = new EventEmitter<string>();
+  @Output() filingMonth = new EventEmitter<string>();
+  @Output() filingYear = new EventEmitter<string>();
 
   selectFiling: string = '';
   isAdditionalType: boolean = false;
   monthDataList: any = [];
   yearList: any = [];
-  selectedMonth: string = '';
+  selectedMonth: string = '1';
   selectedYear: string = '';
   selectedType: string ='';
   currentYear = new Date().getFullYear();
@@ -64,5 +66,11 @@ export class TaxDetailComponent implements OnInit {
     } else {
       this.monthDataList = monthList;
     }
+    this.filingYear.emit(this.selectedYear);
+  }
+
+
+  onMonthChange(){
+    this.filingMonth.emit(this.selectedMonth)
   }
 }

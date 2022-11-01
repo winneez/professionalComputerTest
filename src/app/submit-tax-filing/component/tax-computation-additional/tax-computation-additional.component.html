@@ -13,7 +13,8 @@
     </div>
     <div class="col-4">
       <p-inputNumber
-        [(ngModel)]="surcharge"
+        [(ngModel)]="saleAmount"
+        (ngModelChange)="surchargeChange()"
         mode="currency"
         inputId="currency-thai"
         currency="THB"
@@ -32,13 +33,21 @@
     <div class="col-4">
       <p-inputNumber
         [(ngModel)]="taxAmount"
+        (ngModelChange)="taxAmountChange()"
+        aria-describedby="username2-help"
         mode="currency"
         inputId="currency-thai"
         currency="THB"
         locale="en-TH"
         [useGrouping]="false"
+        [ngClass]="{
+          'ng-invalid ng-dirty': isInvalid
+        }"
       >
       </p-inputNumber>
+      <small id="username2-help" class="p-error block">{{
+        invalidTaxAmount
+      }}</small>
     </div>
   </div>
   <div class="pb-4">
@@ -50,7 +59,8 @@
   <div class="grid ml-3 py-2">
     <div class="col-8">
       <label class="p-d-block text-label"
-        >1. Surcharge <i class="pi pi-question-circle ml-2" pTooltip="Ordinary Filing"></i>
+        >3. Surcharge
+        <i class="pi pi-question-circle ml-2" pTooltip="Additional Filing"></i>
       </label>
     </div>
     <div class="col-4">
@@ -69,12 +79,33 @@
   <div class="grid ml-3 py-2">
     <div class="col-8">
       <label class="p-d-block text-label"
-        >2. Penalty <i class="pi pi-question-circle ml-2" pTooltip="Ordinary Filing"></i>
+        >4. Penalty
+        <i class="pi pi-question-circle ml-2" pTooltip="Additional Filing"></i>
       </label>
     </div>
     <div class="col-4">
       <p-inputNumber
         [(ngModel)]="taxAmount"
+        mode="currency"
+        inputId="currency-thai"
+        currency="THB"
+        locale="en-TH"
+        [useGrouping]="false"
+        [readonly]="true"
+      >
+      </p-inputNumber>
+    </div>
+  </div>
+  <div class="grid ml-3 py-2">
+    <div class="col-8">
+      <label class="p-d-block text-label"
+        >5. Total amount of VAT, surcharnge, and Penalty to be remitted
+        <i class="pi pi-question-circle ml-2" pTooltip="Additional Filing"></i>
+      </label>
+    </div>
+    <div class="col-4">
+      <p-inputNumber
+        [(ngModel)]="totalAmount"
         mode="currency"
         inputId="currency-thai"
         currency="THB"

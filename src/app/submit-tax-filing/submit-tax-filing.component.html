@@ -13,6 +13,8 @@
         <p-fieldset legend="Tax Filing Detail" [toggleable]="true">
           <app-tax-detail *ngIf="!isConfirm"
             (typeOfFiling)="getTypeOfFiling($event)"
+            (filingMonth)="getFilingMonth($event)"
+            (filingYear)="getFilingYear($event)"
           ></app-tax-detail>
           <app-tax-detail-complete *ngIf="isConfirm"></app-tax-detail-complete>
         </p-fieldset>
@@ -23,6 +25,10 @@
           <div *ngIf="!isConfirm">
               <app-tax-computation-ordinary
             *ngIf="!isAdditionalType"
+            (sendSaleAmount)="getSaleAmount($event)"
+            (sendTaxAmount)="getTaxAmount($event)"
+            [isTaxNull]="isTaxNull"
+            [isSaleNull]="isTaxNull"
           ></app-tax-computation-ordinary>
           <app-tax-computation-additional
             *ngIf="isAdditionalType"

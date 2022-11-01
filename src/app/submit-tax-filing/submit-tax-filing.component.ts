@@ -13,6 +13,18 @@ export class SubmitTaxFilingComponent implements OnInit {
   page: string = '';
   activeIndex: number = 0
 
+  filingType : string = '';
+  month: string = '';
+  year: string = '';
+  saleAmount: number = 0;
+  taxAmount: number = 0;
+  surcharge: number = 0;
+  penalty: number = 200;
+  totalAmount: number = 200;
+
+  isSaleNull: boolean = false ;
+  isTaxNull: boolean = false ;
+  isInvalid: boolean = true;
 
   constructor() {}
 
@@ -28,6 +40,7 @@ export class SubmitTaxFilingComponent implements OnInit {
   }
 
   getTypeOfFiling(filingType: string) {
+    this.filingType = filingType;
     if (filingType === '1') {
       this.isAdditionalType = true;
     } else {
@@ -35,8 +48,64 @@ export class SubmitTaxFilingComponent implements OnInit {
     }
   }
 
+  getFilingMonth(filingMonth: any){
+    console.log("month select: ",filingMonth);
+  }
+
+  getFilingYear(filingYear: any){
+    console.log("year select: ",filingYear);
+  }
+
+  getSaleAmount(saleAmount: any){
+    this.saleAmount = saleAmount;
+    if(this.saleAmount ==0){
+      this.isSaleNull = true;
+    }
+    else{
+      this.isSaleNull = false;
+    }
+  }
+
+  getTaxAmount(TaxAmount: any){
+    var totalOfVat = this.saleAmount * 0.07;
+    this.taxAmount = TaxAmount;
+    var taxTotalLength = Math.abs(this.taxAmount - totalOfVat)
+    if(this.taxAmount ==0){
+      this.isTaxNull = true;
+    }
+    if(this.taxAmount !=0){
+      this.isTaxNull = false;
+    }
+    if (
+      taxTotalLength > 20
+    ) {
+      this.isInvalid = true;
+      this.isConfirm = false;
+    } if(taxTotalLength < 20) {
+      this.isInvalid = false;
+    }
+  }
+
   nextPage() {
-    this.isConfirm = true
+    if(this.saleAmount === 0){
+      this.isSaleNull = true;
+      this.isConfirm = false;
+    }
+    if(this.taxAmount ===0){
+      this.isTaxNull = true;
+      this.isConfirm = false;
+    }
+    if(this.taxAmount !=0){
+      this.isSaleNull = false;
+    }
+    if(this.saleAmount !=0){
+      this.isSaleNull = false;
+    }
+    if(this.taxAmount !=0 && this.saleAmount != 0 && this.isInvalid === false){
+      this.isConfirm = true;
+    }
+    console.log(this.isInvalid);
+
   }
 
   previousPage() {
@@ -45,4 +114,6 @@ export class SubmitTaxFilingComponent implements OnInit {
   confirmBtn(){
 
   }
+
+
 }

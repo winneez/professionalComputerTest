@@ -22,7 +22,7 @@
         [(ngModel)]="selectFiling"
         (onClick)="onClickRadio()"
       ></p-radioButton>
-      <label class="ml-3">Ordinary Filing</label>
+      <label class="ml-3">Additional Filing</label>
       <i class="pi pi-question-circle ml-2" pTooltip="Additional Filing"></i>
     </div>
   </div>
@@ -39,6 +39,7 @@
             <p-dropdown
               [options]="monthDataList"
               [(ngModel)]="selectedMonth"
+              (onChange)="onMonthChange()"
               optionLabel="name"
               optionValue="monthNumber"
             ></p-dropdown>
